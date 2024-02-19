@@ -9,6 +9,8 @@ import PlantsFoliage from './components/layout/plants/PlantsFoliage';
 import PlantsRare from './components/layout/plants/PlantsRare';
 import Faqs from './pages/Faqs';
 import Blog from './pages/Blog';
+import FrameFrame from './components/Details';
+import Details from './components/layout/plants/Details';
 
 const router = createBrowserRouter([
   {
@@ -48,6 +50,10 @@ const router = createBrowserRouter([
         element: <PlantsRare />,
       },
     ],
+  },
+  {
+    path: '/plants/foliage-plant/detail/1',
+    element: <Details />,
   },
   {
     path: '/faqs',

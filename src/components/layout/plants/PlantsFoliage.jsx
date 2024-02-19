@@ -1,6 +1,7 @@
 import React, { useContext } from 'react';
 import CardPlants from '../../CardPlants';
 import { PlantsContext } from './DashboardPlants';
+import { Link } from 'react-router-dom';
 
 const PlantsFoliage = () => {
   const { foliagePage } = useContext(PlantsContext);
@@ -10,7 +11,9 @@ const PlantsFoliage = () => {
   return (
     <div className="grid my-3 grid-cols-3 gap-6">
       {value.map((item) => (
-        <CardPlants key={item.id} {...item} />
+        <Link key={item.id} to={`detail/${item.id}`}>
+          <CardPlants {...item} />
+        </Link>
       ))}
     </div>
   );
