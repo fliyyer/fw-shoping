@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Background from '../assets/images/login.png';
 import { FaGoogle, FaFacebook, FaTwitter } from 'react-icons/fa';
+import { useNavigate } from 'react-router-dom';
 
 const Login = () => {
   const [formData, setFormData] = useState({
@@ -27,8 +28,18 @@ const Login = () => {
       setErrorMessage('Please enter a valid email address');
       return;
     }
-    console.log('Form submitted:', formData);
+    if (
+      formData.email === 'admin@gmail.com' &&
+      formData.password === 'admin123'
+    ) {
+      localStorage.setItem('user', JSON.stringify(formData));
+      navigate('/');
+    } else {
+      setErrorMessage('Invalid email or password');
+    }
   };
+
+  const navigate = useNavigate();
 
   return (
     <div className="flex justify-center items-center h-screen overflow-hidden">

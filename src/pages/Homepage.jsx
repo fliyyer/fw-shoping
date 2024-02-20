@@ -1,22 +1,24 @@
-import React, { Fragment } from 'react'
-import Navbar from '../components/Navbar'
-import Header from '../components/layout/homepage/Header'
-import Categories from '../components/layout/homepage/Categories'
-import Trending from '../components/layout/homepage/Trending'
-import OurBlog from '../components/layout/homepage/OurBlog'
-import Footer from '../components/Footer'
+import React, { Fragment } from 'react';
+import Navbar from '../components/Navbar';
+import Header from '../components/layout/homepage/Header';
+import Categories from '../components/layout/homepage/Categories';
+import Trending from '../components/layout/homepage/Trending';
+import OurBlog from '../components/layout/homepage/OurBlog';
+import Footer from '../components/Footer';
+import { useLogin } from '../hooks/useLogin';
 
 const Homepage = () => {
-    return (
-        <Fragment>
-            <Navbar />
-            <Header />
-            <Categories />
-            <Trending />
-            <OurBlog />
-            <Footer />
-        </Fragment>
-    )
-}
+  useLogin();
+  return (
+    <Fragment>
+      <Navbar />
+      <Header />
+      <Categories />
+      <Trending />
+      <OurBlog />
+      <Footer />
+    </Fragment>
+  );
+};
 
-export default Homepage
+export default Homepage;

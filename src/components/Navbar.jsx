@@ -5,6 +5,7 @@ import { RxHamburgerMenu } from 'react-icons/rx';
 import { IoMdClose } from 'react-icons/io';
 import { FaSearch, FaUserAlt } from 'react-icons/fa';
 import { IoCart } from 'react-icons/io5';
+import { useNavigate } from 'react-router-dom';
 
 export default function Navbar() {
   const [navbar, setNavbar] = useState(false);
@@ -15,6 +16,12 @@ export default function Navbar() {
   useEffect(() => {
     setCurrentPath(location.pathname);
   }, [location]);
+
+  const navigate = useNavigate();
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    navigate('/login');
+  };
 
   return (
     <nav className="w-full bg-[#ffffff] shadow">
@@ -77,7 +84,7 @@ export default function Navbar() {
                   <IoCart className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
                 </Link>
               </li>
-              <li>
+              <li onClick={handleLogout}>
                 <FaUserAlt className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
               </li>
             </ul>
