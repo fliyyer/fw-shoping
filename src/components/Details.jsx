@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { FaHeart, FaStar } from 'react-icons/fa';
 import indor1 from '../assets/images/indor1.png';
 import user1 from '../assets/images/user1.png';
+import { IoChatboxEllipses } from 'react-icons/io5';
+import CartPopup from './CartPopup';
 
 const CardDetails = () => {
   const [size, setSize] = useState('Medium');
   const [quantity, setQuantity] = useState(1);
+  const [showPopup, setShowPopup] = useState(false);
 
   const sizes = ['S', 'M', 'L', 'XL'];
 
@@ -22,6 +25,11 @@ const CardDetails = () => {
       setQuantity(quantity - 1);
     }
   };
+
+  const handleAddToCart = () => {
+    setShowPopup(true);
+  };
+
   return (
     <div
       className="flex max-w-7xl rounded-[20px] p-6 mx-auto"
@@ -120,7 +128,9 @@ const CardDetails = () => {
           </div>
         </div>
         <div className="flex items-center gap-3">
-          <button className="bg-[#2CBF83] px-8 py-1 rounded-[20px] text-white font-medium mt-4">
+          <button
+            onClick={handleAddToCart}
+            className="bg-[#2CBF83] px-8 py-1 rounded-[20px] text-white font-medium mt-4">
             Add to cart
           </button>
           <button
@@ -130,6 +140,11 @@ const CardDetails = () => {
           </button>
         </div>
       </div>
+      <div className="relative">
+        <IoChatboxEllipses className="text-4xl cursor-pointer text-gray-400 absolute bottom-1 right-5" />
+      </div>
+
+      {showPopup && <CartPopup setShowPopup={setShowPopup} />}
     </div>
   );
 };

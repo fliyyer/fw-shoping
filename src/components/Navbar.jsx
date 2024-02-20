@@ -68,10 +68,14 @@ export default function Navbar() {
                 <Link to="/faqs">FAQs</Link>
               </li>
               <li>
-                <FaSearch className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
+                <Link to="/plants">
+                  <FaSearch className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
+                </Link>
               </li>
               <li>
-                <IoCart className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
+                <Link to="/cart">
+                  <IoCart className="text-[#000] text-xl font-semibold hover:text-indigo-200" />
+                </Link>
               </li>
               <li>
                 <FaUserAlt className="text-[#000] text-xl font-semibold hover:text-indigo-200" />

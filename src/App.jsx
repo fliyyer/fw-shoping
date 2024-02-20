@@ -11,6 +11,7 @@ import Faqs from './pages/Faqs';
 import Blog from './pages/Blog';
 import FrameFrame from './components/Details';
 import Details from './components/layout/plants/Details';
+import CartOrder from './pages/CartOrder';
 
 const router = createBrowserRouter([
   {
@@ -52,7 +53,23 @@ const router = createBrowserRouter([
     ],
   },
   {
-    path: '/plants/foliage-plant/detail/1',
+    path: '/plants/foliage-plant/detail/:id',
+    element: <Details />,
+  },
+  {
+    path: '/plants/indoor-plant/detail/:id',
+    element: <Details />,
+  },
+  {
+    path: '/plants/detail/:id',
+    element: <Details />,
+  },
+  {
+    path: '/plants/outdoor-plant/detail/:id',
+    element: <Details />,
+  },
+  {
+    path: '/plants/rare-plant/detail/:id',
     element: <Details />,
   },
   {
@@ -62,6 +79,10 @@ const router = createBrowserRouter([
   {
     path: '/blog',
     element: <Blog />,
+  },
+  {
+    path: '/cart',
+    element: <CartOrder />,
   },
 ]);
 

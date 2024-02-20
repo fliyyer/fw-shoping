@@ -1,4 +1,4 @@
-import React, { Fragment, createContext, useContext, useState } from 'react';
+import React, { Fragment, createContext, useEffect, useState } from 'react';
 import { FaLeaf } from 'react-icons/fa';
 import { Link, useLocation } from 'react-router-dom';
 import { FaSearch } from 'react-icons/fa';
@@ -11,7 +11,6 @@ import foliage from '../../../utils/foliage';
 import rare from '../../../utils/rare';
 
 export const PlantsContext = createContext();
-
 const DashboardPlants = () => {
   const [search, setSearch] = useState('');
   const [sortBy, setSortBy] = useState('');
@@ -124,6 +123,12 @@ const DashboardPlants = () => {
     }
   })();
 
+  const [currentPath, setCurrentPath] = useState('');
+
+  useEffect(() => {
+    setCurrentPath(location.pathname);
+  }, [location]);
+
   return (
     <Fragment>
       <div className="flex max-w-7xl my-10 mx-auto justify-between">
@@ -140,7 +145,13 @@ const DashboardPlants = () => {
           <div className="flex gap-[10px] mt-[10px] flex-col">
             <Link
               to="indoor-plant"
-              className="flex items-center h-[40px] w-[238px] px-10 rounded-[20px] p-4"
+              className={`flex items-center hover:bg-[#59F688] ${
+                currentPath === '/plants/indoor-plant'
+                  ? 'bg-[#59F688]'
+                  : '' || currentPath === '/plants'
+                  ? 'bg-[#59F688]'
+                  : ''
+              } h-[40px] w-[238px] px-10 rounded-[20px] p-4`}
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.10)',
                 boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -151,7 +162,9 @@ const DashboardPlants = () => {
             </Link>
             <Link
               to="outdoor-plant"
-              className="flex items-center h-[40px] w-[238px] px-10 rounded-[20px] p-4"
+              className={`flex items-center hover:bg-[#59F688] h-[40px] w-[238px] px-10 rounded-[20px] p-4 ${
+                currentPath === '/plants/outdoor-plant' ? 'bg-[#59F688]' : ''
+              }`}
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.10)',
                 boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -162,7 +175,9 @@ const DashboardPlants = () => {
             </Link>
             <Link
               to="foliage-plant"
-              className="flex items-center h-[40px] w-[238px] px-10 rounded-[20px] p-4"
+              className={`flex items-center hover:bg-[#59F688] h-[40px] w-[238px] px-10 rounded-[20px] ${
+                currentPath === '/plants/foliage-plant' ? 'bg-[#59F688]' : ''
+              } p-4`}
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.10)',
                 boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -173,7 +188,9 @@ const DashboardPlants = () => {
             </Link>
             <Link
               to="rare-plant"
-              className="flex items-center h-[40px] w-[238px] px-10 rounded-[20px] p-4"
+              className={`flex items-center h-[40px] hover:bg-[#59F688] w-[238px] px-10 rounded-[20px] p-4 ${
+                currentPath === '/plants/rare-plant' ? 'bg-[#59F688]' : ''
+              }`}
               style={{
                 border: '1px solid rgba(0, 0, 0, 0.10)',
                 boxShadow: '0px 4px 4px 0px rgba(0, 0, 0, 0.25)',
@@ -186,7 +203,9 @@ const DashboardPlants = () => {
         </div>
         <div className="w-[65%] mx-[20px]">
           <div className="flex justify-between items-center">
-            <p className="text-[#000000] font-bold text-3xl">{title} Plants</p>
+            <p className="text-[#000000] font-bold text-3xl">
+              {title || 'Indoor'} Plants
+            </p>
             <div className="relative">
               <input
                 className="bg-white w-[238px] p-4 h-[46px] rounded-[20px] text-sm italic pr-12"
@@ -206,7 +225,7 @@ const DashboardPlants = () => {
               <FaSearch className="text-[#000] absolute top-1/2 text-xl transform -translate-y-1/2 right-4" />
             </div>
           </div>
-          <div>
+          <div className="min-h-[100vh]">
             <PlantsContext.Provider value={contextPlants}>
               <Outlet />
             </PlantsContext.Provider>
