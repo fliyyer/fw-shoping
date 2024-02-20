@@ -33,12 +33,12 @@ const Filter = ({ handleFilter }) => {
               Price
             </li>
             <li
-              onClick={() => handleSelect('expensive to cheap')}
+              onClick={() => handleSelect('Expensive to Cheap')}
               className="py-2 px-4 cursor-pointer hover:bg-[#2b7f79]">
               Expensive to Cheap
             </li>
             <li
-              onClick={() => handleSelect('cheap to expensive')}
+              onClick={() => handleSelect('Cheap to Expensive')}
               className="py-2 px-4 cursor-pointer hover:bg-[#2b7f79]">
               Cheap to Expensive
             </li>

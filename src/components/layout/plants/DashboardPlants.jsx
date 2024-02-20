@@ -32,6 +32,10 @@ const DashboardPlants = () => {
               return a.title.localeCompare(b.title);
             } else if (sortBy === 'Price') {
               return a.price - b.price;
+            } else if (sortBy === 'Expensive to Cheap') {
+              return b.price - a.price;
+            } else if (sortBy === 'Cheap to Expensive') {
+              return a.price - b.price;
             }
             return 0;
           }),
@@ -50,6 +54,10 @@ const DashboardPlants = () => {
             if (sortBy === 'A-Z') {
               return a.title.localeCompare(b.title);
             } else if (sortBy === 'Price') {
+              return a.price - b.price;
+            } else if (sortBy === 'Expensive to Cheap') {
+              return b.price - a.price;
+            } else if (sortBy === 'Cheap to Expensive') {
               return a.price - b.price;
             }
             return 0;
@@ -70,6 +78,10 @@ const DashboardPlants = () => {
               return a.title.localeCompare(b.title);
             } else if (sortBy === 'Price') {
               return a.price - b.price;
+            } else if (sortBy === 'Expensive to Cheap') {
+              return b.price - a.price;
+            } else if (sortBy === 'Cheap to Expensive') {
+              return a.price - b.price;
             }
             return 0;
           }),
@@ -88,6 +100,10 @@ const DashboardPlants = () => {
             if (sortBy === 'A-Z') {
               return a.title.localeCompare(b.title);
             } else if (sortBy === 'Price') {
+              return a.price - b.price;
+            } else if (sortBy === 'Expensive to Cheap') {
+              return b.price - a.price;
+            } else if (sortBy === 'Cheap to Expensive') {
               return a.price - b.price;
             }
             return 0;

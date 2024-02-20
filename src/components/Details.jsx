@@ -4,11 +4,13 @@ import indor1 from '../assets/images/indor1.png';
 import user1 from '../assets/images/user1.png';
 import { IoChatboxEllipses } from 'react-icons/io5';
 import CartPopup from './CartPopup';
+import ChatPopup from './ChatPopup';
 
 const CardDetails = () => {
   const [size, setSize] = useState('Medium');
   const [quantity, setQuantity] = useState(1);
   const [showPopup, setShowPopup] = useState(false);
+  const [showChat, setShowChat] = useState(false);
 
   const sizes = ['S', 'M', 'L', 'XL'];
 
@@ -28,6 +30,10 @@ const CardDetails = () => {
 
   const handleAddToCart = () => {
     setShowPopup(true);
+  };
+
+  const handleChat = () => {
+    setShowChat(true);
   };
 
   return (
@@ -141,9 +147,13 @@ const CardDetails = () => {
         </div>
       </div>
       <div className="relative">
-        <IoChatboxEllipses className="text-4xl cursor-pointer text-gray-400 absolute bottom-1 right-5" />
+        <IoChatboxEllipses
+          onClick={handleChat}
+          className="text-4xl cursor-pointer text-gray-400 absolute bottom-1 right-5"
+        />
       </div>
 
+      {showChat && <ChatPopup setShowChat={setShowChat} />}
       {showPopup && <CartPopup setShowPopup={setShowPopup} />}
     </div>
   );
